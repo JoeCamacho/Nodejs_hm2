@@ -50,7 +50,7 @@ if (command === 'reset') {
             console.log(chalk.red(error));
             return;
         }
-        console.log(data);
+        console.log("The TODO list has been deleted");
     })
 };
 
