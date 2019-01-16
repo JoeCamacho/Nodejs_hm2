@@ -2,10 +2,9 @@ const chalk = require('chalk');
 const fs = require('fs');
 const figures = require('figures');
 
+
 const args = process.argv;
-
 const command = args[2];
-
 let newElement = args[3];
 
 if (command === 'list') {
@@ -31,18 +30,23 @@ if (command === 'add') {
     })
 };
 
-if (command === 'remove') {
-    fs.readFile('./todos.txt', 'utf8', (error, data) => {
+if (command === "remove") {
+    fs.readFile("./todos.txt", "utf8", (error, data) => {
         if (error) {
             console.log(chalk.red(error));
             return;
         }
-        const array = data.split();
-        let newarray = array.slice(0, 0)
-        console.log(newarray);
-    })
 
-};
+        let todoArray = data.split("\n");
+        if (args[3] > -1) {
+            todoArray.splice(args[3], 1);
+            let newTodoList = todoArray.join("\n");
+            fs.writeFile("./todos.txt", newTodoList, () => {
+                console.log(chalk.green("Todo list has been updated"));
+            });
+        }
+    });
+}
 
 if (command === 'reset') {
     fs.truncate('./todos.txt', 0, (error, data) => {

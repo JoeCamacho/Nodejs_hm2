@@ -1,6 +1,6 @@
 List of Commands: 
 1. list: Shows all the items in the TODO list
 2. add: Add items to the TODO list. (To add a string use quotation marks)
-3. remove: Remove items from the TODO list according to its position
+3. remove: Remove items from the TODO list. After the command, introduce the index of the item that wish to remove. (Remember that this is 0 based array)
 4. reset: Delete all the items in the TODO list
 5. love: Love Coding
